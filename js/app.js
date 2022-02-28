@@ -31,5 +31,12 @@ const showMobiles = (mobiles) => {
     }
 }
 const mobileDetails = (id) => {
-    console.log(id);
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(datas => displayMobileDetails(datas.data))
+}
+
+const displayMobileDetails = (details) => {
+
 }
