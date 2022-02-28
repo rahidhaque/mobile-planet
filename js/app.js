@@ -28,6 +28,7 @@ const showMobiles = (mobiles) => {
             const div = document.createElement('div');
             div.classList.add('card');
             div.classList.add('h-100');
+            div.classList.add('text-center');
             div.innerHTML = `   
                     <div class="border">                 
                     <img src="${mobile.image}" class="card-img-top w-50" alt="...">
@@ -54,21 +55,34 @@ const mobileDetails = (id) => {
 
 //displaying mobile informations
 const displayMobileDetails = (detail) => {
-    document.getElementById('mobile-container').style.display = "none";
     const parent = document.getElementById('mobile-detail-container');
     parent.textContent = "";
     const div = document.createElement('div');
     div.classList.add('card');
     div.classList.add('h-100');
     div.classList.add('text-center');
-    console.log(detail.releaseDate);
+    console.log(detail.others);
     if (detail.releaseDate == '') {
         detail.releaseDate = "To Be Announced(TBA)";
     }
     div.innerHTML = `   
                     <div class="border">  
                     <img src="${detail.image}" class="card-img-top w-auto h-auto" alt="...">
-                    < 
+                    <h5 class="card-title mt-2">Name: ${detail.name}</h5>
+                    <h5 class="card-title mt-2">Release Date: ${detail.releaseDate}</h5>
+                    <h5 class="card-title mt-2">Main Features</h5>
+                    <h6 class="card-title mt-2">Storage: ${detail.mainFeatures.storage}</h6>
+                    <h6 class="card-title mt-2">Display Size: ${detail.mainFeatures.displaySize}</h6>
+                    <h6 class="card-title mt-2">Chip Set: ${detail.mainFeatures.chipSet}</h6>
+                    <h6 class="card-title mt-2">Memory Size: ${detail.mainFeatures.memory}</h6>
+                    <h6 class="card-title mt-2">Sensors: ${detail.mainFeatures.sensors.toString()}</h6>
+                    <h5 class="card-title mt-2">Others</h5>
+                    <h6 class="card-title mt-2">WLAN: ${detail.others.WLAN}</h6>
+                    <h6 class="card-title mt-2">Bluetooth: ${detail.others.Bluetooth}</h6>
+                    <h6 class="card-title mt-2">GPS: ${detail.others.GPS}</h6>
+                    <h6 class="card-title mt-2">NFC: ${detail.others.NFC}</h6>
+                    <h6 class="card-title mt-2">Radio: ${detail.others.Radio}</h6>
+                    <h6 class="card-title mt-2">USB: ${detail.others.USB}</h6>
                     `
     parent.appendChild(div);
 }
