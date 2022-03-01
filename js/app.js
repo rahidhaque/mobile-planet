@@ -4,6 +4,7 @@ const allMobiles = () => {
     const searchValue = searchField.value;
     searchField.value = "";
     if (searchValue == "") {
+        document.getElementById('mobile-detail-container').textContent = "";
         document.getElementById('mobile-container').innerHTML = `
         <h2 class="text-danger text-center mr-10">Please Search Something!</h2>
         `;
