@@ -5,7 +5,7 @@ const allMobiles = () => {
     searchField.value = "";
     if (searchValue == "") {
         document.getElementById('mobile-container').innerHTML = `
-        <h2 class="text-danger text-center">Please Search Something!</h2>
+        <h2 class="text-danger text-center mr-10">Please Search Something!</h2>
         `;
     }
     else {
@@ -19,47 +19,41 @@ const allMobiles = () => {
 
 //showing 20 mobile phones
 const showMobiles = (results) => {
-    let mobiles = results.slice(0, 5);;
-    const showMore = document.getElementById('show-more');
-    // showMore.style.display = "inline";
-    if (results.length > 5) {
-        showMore.style.display = "inline";
-        showMore.addEventListener
-        showMore.innerHTML = `
-        
-        `
-    }
-
+    let mobiles = results.slice(0, 20);
     const parent = document.getElementById('mobile-container');
     parent.textContent = "";
+    document.getElementById('mobile-detail-container').textContent = "";
     if (mobiles.length == 0) {
-        parent.innerHTML = `<h2 class="text-danger text-center">No Result Found!</h2>`;
+        parent.innerHTML = `           
+        <h2 class="text-danger">No Results Found!</h2 >     
+        `;
     }
     else {
         for (const mobile of mobiles) {
             const div = document.createElement('div');
             div.classList.add('card');
+            div.classList.add('rounded');
+            div.classList.add('shadow-lg');
+            div.classList.add('my-5');
             div.classList.add('h-100');
             div.classList.add('text-center');
-            div.innerHTML = `   
-                    <div class="border">                 
-                    <img src="${mobile.image}" class="card-img-top w-50" alt="...">
-                    <div class="card-body m-5">
-                        <h5 class="card-title">Phone Name:</h5>
-                        <p class="card-text">${mobile.phone_name}</p>
-                        <h5 class="card-title">Brand Name:</h5>
-                        <p class="card-text">${mobile.brand}</p>
-                        <button onclick="mobileDetails('${mobile.slug}')" class="btn btn-success">Details</button>
-                    </div>
-                    </div>
-        `;
+            div.innerHTML = `
+        <div class="">
+            <img src="${mobile.image}" class="card-img-top w-50" alt="...">
+                <div class="card-body m-5">
+                    <h5 class="card-title">Phone Name:</h5>
+                    <p class="card-text">${mobile.phone_name}</p>
+                    <h5 class="card-title">Brand Name:</h5>
+                    <p class="card-text">${mobile.brand}</p>
+                    <button onclick="mobileDetails('${mobile.slug}')" class="btn btn-success">Details</button>
+                </div>
+            </div>
+    `;
             parent.appendChild(div);
         }
     }
 
 }
-
-
 
 //fetching mobile informations
 const mobileDetails = (id) => {
@@ -77,7 +71,6 @@ const displayMobileDetails = (detail) => {
     div.classList.add('card');
     div.classList.add('h-100');
     div.classList.add('text-center');
-    console.log(detail.others);
     if (detail.releaseDate == '') {
         detail.releaseDate = "To Be Announced(TBA)";
     }
