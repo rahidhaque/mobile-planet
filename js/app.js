@@ -14,10 +14,22 @@ const allMobiles = () => {
             .then(response => response.json())
             .then(datas => showMobiles(datas.data))
     }
+
 }
 
-//showing all the mobile phones
-const showMobiles = (mobiles) => {
+//showing 20 mobile phones
+const showMobiles = (results) => {
+    let mobiles = results.slice(0, 5);;
+    const showMore = document.getElementById('show-more');
+    // showMore.style.display = "inline";
+    if (results.length > 5) {
+        showMore.style.display = "inline";
+        showMore.addEventListener
+        showMore.innerHTML = `
+        
+        `
+    }
+
     const parent = document.getElementById('mobile-container');
     parent.textContent = "";
     if (mobiles.length == 0) {
@@ -44,7 +56,11 @@ const showMobiles = (mobiles) => {
             parent.appendChild(div);
         }
     }
+
 }
+
+
+
 //fetching mobile informations
 const mobileDetails = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
@@ -85,4 +101,5 @@ const displayMobileDetails = (detail) => {
                     <h6 class="card-title mt-2">USB: ${detail.others.USB}</h6>
                     `
     parent.appendChild(div);
+    window.scrollTo(0, 0);
 }
