@@ -71,7 +71,6 @@ const displayMobileDetails = (detail) => {
     div.classList.add('card');
     div.classList.add('h-100');
     div.classList.add('text-center');
-    console.log(detail);
     if (detail.releaseDate == '') {
         detail.releaseDate = "To Be Announced(TBA)";
     }
