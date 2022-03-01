@@ -71,9 +71,15 @@ const displayMobileDetails = (detail) => {
     div.classList.add('card');
     div.classList.add('h-100');
     div.classList.add('text-center');
+    console.log(detail);
     if (detail.releaseDate == '') {
         detail.releaseDate = "To Be Announced(TBA)";
     }
+    else if (detail?.others === undefined) {
+        const others = { WLAN: "None", Bluetooth: "None", GPS: "None", NFC: "None", Radio: "None", USB: "None" };
+        detail.others = Object.assign(others);
+    }
+
     div.innerHTML = `   
                     <div class="border">  
                     <img src="${detail.image}" class="card-img-top w-auto h-auto" alt="...">
@@ -87,11 +93,11 @@ const displayMobileDetails = (detail) => {
                     <h6 class="card-title mt-2">Sensors: ${detail.mainFeatures.sensors.toString()}</h6>
                     <h5 class="card-title mt-2">Others</h5>
                     <h6 class="card-title mt-2">WLAN: ${detail.others.WLAN}</h6>
-                    <h6 class="card-title mt-2">Bluetooth: ${detail.others.Bluetooth}</h6>
-                    <h6 class="card-title mt-2">GPS: ${detail.others.GPS}</h6>
-                    <h6 class="card-title mt-2">NFC: ${detail.others.NFC}</h6>
-                    <h6 class="card-title mt-2">Radio: ${detail.others.Radio}</h6>
-                    <h6 class="card-title mt-2">USB: ${detail.others.USB}</h6>
+                    <h6 class="card-title mt-2">Bluetooth: ${detail.others?.Bluetooth}</h6>
+                    <h6 class="card-title mt-2">GPS: ${detail.others?.GPS}</h6>
+                    <h6 class="card-title mt-2">NFC: ${detail.others?.NFC}</h6>
+                    <h6 class="card-title mt-2">Radio: ${detail.others?.Radio}</h6>
+                    <h6 class="card-title mt-2">USB: ${detail.others?.USB}</h6>
                     `
     parent.appendChild(div);
     window.scrollTo(0, 0);
